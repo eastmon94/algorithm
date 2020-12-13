@@ -11,7 +11,6 @@ public class B3954_bf인터프리터 {
     static int pointer;
     static char[] input, cmd;
     static int inputNum, cmdNum;
-    static int loopEnd, maxBracket;
     static int[] bracket;
     public static void main(String[] args) throws Exception{
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -33,21 +32,25 @@ public class B3954_bf인터프리터 {
             int cmdCnt = 0;
             Stack<Integer> s = new Stack<>();
             bracket = new int[C];
-            maxBracket = Integer.MIN_VALUE;
             calcLoop(s);
-            while(true) {
+            while(cmdCnt++ < 50000000) {
                 if(cmdNum >= C) {
                     System.out.println("Terminates");
                     break;
                 }
 
-                if(cmdCnt > 50000000) {
-                    System.out.println("Loops "+bracket[maxBracket] +" "+maxBracket);
-                    break;
+                calc(cmd[cmdNum]);
+            }
+
+            if(cmdNum < C) {
+                int loopEnd = Integer.MIN_VALUE, loopStart = Integer.MAX_VALUE;
+                while(cmdCnt-- >= 0) {
+                    calc(cmd[cmdNum]);
+                    loopEnd = Math.max(loopEnd, cmdNum);
+                    loopStart = Math.min(loopStart, cmdNum);
                 }
 
-                calc(cmd[cmdNum]);
-                cmdCnt++;
+                System.out.println("Loops "+loopStart + " " + loopEnd);
             }
         }
     }
@@ -73,7 +76,6 @@ public class B3954_bf인터프리터 {
             case '[' :
                 if(data[pointer] == 0) {
                     cmdNum = bracket[cmdNum];
-                    loopEnd = cmdNum;
                 } else {
                     cmdNum++;
                 }
@@ -81,10 +83,9 @@ public class B3954_bf인터프리터 {
                 
             case ']' :
                 if(data[pointer] != 0) {
-                    loopEnd = cmdNum;
                     cmdNum = bracket[cmdNum];
-                    maxBracket = Math.max(loopEnd, maxBracket);
-                } else {
+                } 
+                else {
                     cmdNum++;
                 }
                 break;

@@ -26,7 +26,6 @@ public class B15655_N과M6 {
         }
         Arrays.sort(seq);
 
-        // permutation(0);
         combination(0, 0);
     }
 
@@ -40,25 +39,6 @@ public class B15655_N과M6 {
         for(int i=cur; i<N; i++) {
             numbers[idx] = seq[i];
             combination(idx + 1, i + 1);
-        }
-    }
-
-
-    private static void permutation(int idx) {
-
-        if(idx == M) {
-            System.out.println(Arrays.toString(numbers));
-
-            return;
-        }
-        
-        for(int i=0; i<N; i++) {
-            if(selected[i]) continue;
-
-            selected[i] = true;
-            numbers[idx] = seq[i];
-            permutation(idx+1);
-            selected[i] = false;
         }
     }
 }

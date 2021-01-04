@@ -13,7 +13,7 @@ public class B15685_드래곤커브 {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
 
-        map = new int[100][100];
+        map = new int[101][101];
         N = Integer.parseInt(in.readLine());
         input = new int[N][4];
         for(int n=0; n<N; n++) {
@@ -23,17 +23,11 @@ public class B15685_드래곤커브 {
             }
         }
 
-        direction = new int[10][1024];
+        direction = new int[10][512];
         genDirection(0);
-        // for(int i=0; i<10; i++) {
-        //     for(int j=0; j<32; j++) {
-        //         System.out.print(direction[i][j]+" ");
-        //     }
-        //     System.out.println();
-        // }
         
         for(int n=0; n<N; n++) {
-            simulate(input[n][0], input[n][1], input[n][2], input[n][3], n+1);
+            simulate(input[n][1], input[n][0], input[n][2], input[n][3], n+1);
         }
 
         System.out.println(recCount());
@@ -46,8 +40,8 @@ public class B15685_드래곤커브 {
         map[r][c]=n;
         map[cr][cc]=n;
         for(int i=0; i<=g-1; i++) {
-            for(int j=0; j<1024; j++) {
-                if(j==0) break;
+            for(int j=0; j<512; j++) {
+                if(direction[i][j]==0) break;
                 d=(d+direction[i][j]+4)%4;
                 nr = cr+dr[d];
                 nc = cc+dc[d];
@@ -74,8 +68,8 @@ public class B15685_드래곤커브 {
 
     static int recCount() {
         int count=0;
-        for(int i=0; i<99; i++) {
-            for(int j=0; j<99; j++) {
+        for(int i=0; i<100; i++) {
+            for(int j=0; j<100; j++) {
                 if(map[i][j] == 0) continue;
                 
                 if(map[i+1][j]!=0 && map[i][j+1]!=0 && map[i+1][j+1]!=0) count++;
@@ -83,5 +77,9 @@ public class B15685_드래곤커브 {
         }
 
         return count;
+    }
+
+    static boolean isIn(int r, int c) {
+        return 0<=r && r<100 && 0<=c && c<100;
     }
 }

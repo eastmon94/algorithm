@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 
-import jdk.nashorn.api.tree.Tree;
-
 public class B16235_나무재테크 {
     static int N, M, K;
     static int[][] map;

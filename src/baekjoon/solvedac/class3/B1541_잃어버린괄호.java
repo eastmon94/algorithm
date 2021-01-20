@@ -32,7 +32,7 @@ public class B1541_잃어버린괄호 {
         }
 
         size = operator.size();
-        int point = Integer.MAX_VALUE;
+        int point = -1;
         for(int i=size-1; i>=0; i--) {
             if(operator.get(i)=='+') continue;
             point = i;
@@ -40,17 +40,11 @@ public class B1541_잃어버린괄호 {
         }
 
         int answer = operand.get(operand.size()-1);
-        if(point==Integer.MAX_VALUE) {
-            for(int i=0; i<operand.size()-1; i++) {
-                answer += operand.get(i);
-            }
-        }else {
-            for(int i=operand.size()-2; i>point; i--) {
-                answer += operand.get(i);
-            }
-            for(int i=point; i>=0; i--) {
-                answer -= operand.get(i);
-            }
+        for(int i=operand.size()-2; i>point; i--) {
+            answer += operand.get(i);
+        }
+        for(int i=point; i>=0; i--) {
+            answer -= operand.get(i);
         }
 
         System.out.println(answer);

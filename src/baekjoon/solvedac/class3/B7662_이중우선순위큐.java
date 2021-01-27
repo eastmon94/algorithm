@@ -25,15 +25,14 @@ public class B7662_이중우선순위큐 {
                     if(map.get(num)==null) map.put(num, 1);
                     else map.replace(num, map.get(num)+1);
                 }else {
-                    if(map.size()!=0) {
-                        int key;
-                        if(num==1) key = map.lastKey();
-                        else       key = map.firstKey();
+                    if(map.size()==0)  continue;
 
-                        if(map.get(key)==1) map.remove(key);
-                        else map.replace(key, map.get(key)-1);
-        
-                    }
+                    int key;
+                    if(num==1) key = map.lastKey();
+                    else       key = map.firstKey();
+
+                    if(map.get(key)==1) map.remove(key);
+                    else map.replace(key, map.get(key)-1);
                 }
             }
 
@@ -42,13 +41,5 @@ public class B7662_이중우선순위큐 {
         }
 
         System.out.println(sb.toString());
-    }
-
-    static class Pair {
-        int num, i;
-        public Pair(int num, int i) {
-            this.num=num;
-            this.i=i;
-        }
     }
 }

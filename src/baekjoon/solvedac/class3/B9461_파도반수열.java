@@ -3,7 +3,7 @@ package baekjoon.solvedac.class3;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class B941_파도반수열 {
+public class B9461_파도반수열 {
     static long[] numbers;
     public static void main(String[] args) throws Exception{
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));

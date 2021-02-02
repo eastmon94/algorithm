@@ -49,11 +49,8 @@ public class B11286_절댓값힙 {
             int num=1;
             int switchNode;
             while(num*2 <= count) {
-                if(num*2+1 <= count) {
-                    if(compare(num*2, num*2+1)) switchNode = num*2+1;
-                    else                        switchNode = num*2;
-                }
-                else switchNode=num*2;
+                if(num*2+1 <= count) switchNode = compare(num*2, num*2+1) ? num*2+1 : num*2;
+                else                 switchNode=num*2;
 
                 if(compare(num, switchNode)) {
                     swap(num, switchNode);

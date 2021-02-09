@@ -2,7 +2,6 @@ package programmers.KAKAO2021;
 
 class Solution {
     public String solution(String new_id) {
-        String answer = "";
         StringBuilder sb = new StringBuilder();
         sb.append(new_id);
         step1(sb);

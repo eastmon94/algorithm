@@ -20,11 +20,8 @@ public class B1629_곱셈 {
 
         long num = dfs(a, b/2, c);
 
-        if(b%2==0) {
-            return (num*num)%c;
-        } else {
-            return (( (num*num)%c ) * (a%c))%c;
-        }
+        if(b%2==0) return (num*num)%c;
+        else       return (( (num*num)%c ) * (a%c))%c;
 
     }
 }

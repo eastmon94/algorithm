@@ -35,9 +35,9 @@ public class B9663_NQueen {
     }
 
 
-    static int[] dr = {-1, 1, 0, 0, -1, -1, 1, 1}, dc = {0, 0, -1, 1, 1, -1, 1, -1};
+    static int[] dr = {-1, -1, -1}, dc = {0, 1, -1};
     static boolean check(int r, int c) {
-        for(int d=0; d<8; d++) {
+        for(int d=0; d<3; d++) {
             int tr = r, tc = c;
             while(true) {
                 int nr = tr+dr[d];
